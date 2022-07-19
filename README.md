@@ -17,3 +17,8 @@ CREATE DATABASE lovelystaydb
 
 Step
 db-migrate up initialize
+
+CLI Commands
+
+git-cli fetch <user> - Fetch profile, repositories and code languages from git <user>
+git-cli fetch <list> - List users
