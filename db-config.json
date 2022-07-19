@@ -1,0 +1,17 @@
+{
+    "dev": {
+      "driver": "pg",
+      "user": "postgres",
+      "password": "changeme",
+      "host": "localhost",
+      "port": 5432,
+      "database": "lovelystaydb"
+    },
+   
+      "host": "localhost",
+      "port": 5432,
+      "database": "pg-promise-demo",
+      "user": "postgres"
+    
+  }
+  
