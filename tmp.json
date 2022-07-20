@@ -1,0 +1,80 @@
+{
+  "login": "ace-api",
+  "languages": [
+    {
+      "login": "vitaly-t",
+      "repoName": "angular-test",
+      "knownLanguage": "{CSS"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "angular-test",
+      "knownLanguage": "JavaScript"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "angular-test",
+      "knownLanguage": "HTML"
+    },
+    { "login": "vitaly-t", "repoName": "addons", "knownLanguage": "{Python" },
+    { "login": "vitaly-t", "repoName": "addons", "knownLanguage": "C++" },
+    { "login": "vitaly-t", "repoName": "addons", "knownLanguage": "Smarty" },
+    { "login": "vitaly-t", "repoName": "addons", "knownLanguage": "Shell" },
+    { "login": "vitaly-t", "repoName": "addons", "knownLanguage": "Makefile" },
+    {
+      "login": "vitaly-t",
+      "repoName": "alphaville-longroom",
+      "knownLanguage": "{JavaScript"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "alphaville-longroom",
+      "knownLanguage": "HTML"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "alphaville-longroom",
+      "knownLanguage": "CSS"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "angular",
+      "knownLanguage": "{TypeScript"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "angular",
+      "knownLanguage": "JavaScript"
+    },
+    { "login": "vitaly-t", "repoName": "angular", "knownLanguage": "CSS" },
+    { "login": "vitaly-t", "repoName": "angular", "knownLanguage": "HTML" },
+    { "login": "vitaly-t", "repoName": "angular", "knownLanguage": "Python" },
+    { "login": "vitaly-t", "repoName": "angular", "knownLanguage": "Shell" },
+    {
+      "login": "vitaly-t",
+      "repoName": "angular",
+      "knownLanguage": "Dockerfile"
+    },
+    { "login": "vitaly-t", "repoName": "angular", "knownLanguage": "PHP" },
+    {
+      "login": "vitaly-t",
+      "repoName": "20-Questions-Game",
+      "knownLanguage": "{HTML"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "20-Questions-Game",
+      "knownLanguage": "JavaScript"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "20-Questions-Game",
+      "knownLanguage": "CSS"
+    },
+    {
+      "login": "vitaly-t",
+      "repoName": "ace-api",
+      "knownLanguage": "{JavaScript"
+    }
+  ]
+}

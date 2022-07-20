@@ -13,7 +13,7 @@ const listuser_1 = __importDefault(require("./commands/listuser"));
 (0, clear_1.default)();
 console.log(chalk_1.default.greenBright(figlet_1.default.textSync('git-cli', { horizontalLayout: 'full' })));
 commander_1.program
-    .version('0.0.1')
+    .version('0.0.2')
     .description('Cli app to fetch e query programming languages and locations')
     .parse(process.argv);
 commander_1.program

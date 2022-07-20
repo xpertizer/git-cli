@@ -1,5 +1,7 @@
+import { values } from 'lodash';
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
+import UserObject from '../../src/models/user';
 import { GitUsers } from '../models';
 import { gitusers as sql } from '../sql';
 
@@ -48,8 +50,38 @@ export class GitUsersRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(name: string): Promise<GitUsers> {
-    return this.db.one(sql.add, name);
+  async add(_user: UserObject): Promise<void> {
+    console.log('****************\n ADD pg-promisse\n*******************');
+
+    const cs = new this.pgp.helpers.ColumnSet(
+      ['login', 'location', 'name', 'bio', 'avatar_url', 'company'],
+      { table: 'gitusers' },
+    );
+    console.log(
+      `\n _user ${JSON.stringify(
+        _user,
+      )}==============================================\n`,
+    );
+    const values = JSON.parse(JSON.stringify(_user));
+
+    this.pgp.helpers.insert(values, cs);
+    // return await this.db.none(
+    //   `INSERT INTO public.gitusers(login, location, name, bio, avatar_url, company) VALUES ('${_user.login}', '${_user.location}', '${_user.name}', '${_user.bio}', '${_user.avatar_url}', '${_user.company})';`,
+    // );
+    /*
+    return this.db.one(sql.add, [
+      _user.login ,
+      _user.location,
+      _user.name,
+      _user.bio,
+      _user.avatar_url,
+      _user.company,
+
+      INSERT INTO public.gitusers(
+	login, location, name, bio, avatar_url, company)
+	VALUES ($1, $2, $3, $4, $5, $6);
+    ]);
+    */
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;
@@ -62,8 +94,16 @@ export class GitUsersRepository {
   }
 
   // Tries to find a user from id;
-  async findByLogin(login: number): Promise<GitUsers | null> {
-    return this.db.oneOrNone('SELECT * FROM gitusers WHERE login = $1', +login);
+  async find(_user: UserObject): Promise<GitUsers | null> {
+    console.log('****************\n FIND pg-promisse\n*******************');
+    return this.findByLogin(_user);
+  }
+  // Tries to find a user from id;
+  async findByLogin(_user: UserObject): Promise<GitUsers | null> {
+    return this.db.oneOrNone(
+      'SELECT * FROM gitusers WHERE login = $1',
+      _user.login,
+    );
   }
 
   // Tries to find a user from name;

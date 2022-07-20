@@ -1,0 +1,71 @@
+
+
+23:15:42 error: Connection terminated unexpectedly
+         connection: {"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres","default":{"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres"}}
+
+23:48:52 error: Connection terminated unexpectedly
+         connection: {"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres","default":{"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres"}}
+
+08:12:45 error: the database system is starting up
+         connection: {"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres","default":{"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres"}}
+
+11:46:38 error: database "pg-promise-demo" does not exist
+         connection: {"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres","password":"########","default":{"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres","password":"changeme"}}
+
+11:47:14 error: database "pg-promise-demo" does not exist
+         connection: {"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres","password":"########","default":{"dev":{"driver":"pg","user":"postgres","password":"changeme","host":"localhost","port":5432,"database":"lovelystaydb"},"host":"localhost","port":5432,"database":"pg-promise-demo","user":"postgres","password":"changeme"}}
+
+11:47:48 error: syntax error at or near "$"
+         task(add-git-user): INSERT INTO public.gitusers( login, location, name, bio, avatar_url, company) VALUES (${login}, ${location}, ${name}, ${bio}, ${avatar_url}, ${company}); RETURNING *
+
+12:23:22 error: there is no parameter $1
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ($1, $2, $3, $4, $5, $6)
+
+12:30:00 error: there is no parameter $1
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ($1, $2, $3, $4, $5, $6)
+
+12:31:01 error: there is no parameter $1
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ($1, $2, $3, $4, $5, $6)
+
+12:34:52 error: syntax error at or near "$"
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ($login, $2, $3, $4, $5, $6)
+
+12:41:45 error: syntax error at or near "Tomilov"
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES (vitaly-t, Wicklow, Ireland, Vitaly Tomilov, Full-Stack Developer
+, https://avatars.githubusercontent.com/u/5108906?v=4, undefined)
+
+12:42:50 error: syntax error at or near "Tomilov"
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES (vitaly-t, Wicklow, Ireland, Vitaly Tomilov, Full-Stack Developer
+, https://avatars.githubusercontent.com/u/5108906?v=4, undefined)
+
+12:43:18 error: syntax error at or near "Tomilov"
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES (vitaly-t, Wicklow, Ireland, Vitaly Tomilov, Full-Stack Developer
+, https://avatars.githubusercontent.com/u/5108906?v=4, undefined)
+
+12:44:45 error: syntax error at end of input
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ('vitaly-t', 'Wicklow, Ireland', 'Vitaly Tomilov', 'Full-Stack Developer
+', 'https://avatars.githubusercontent.com/u/5108906?v=4', 'undefined)'
+
+12:46:11 error: syntax error at or near ";"
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ('vitaly-t', 'Wicklow, Ireland', 'Vitaly Tomilov', 'Full-Stack Developer
+', 'https://avatars.githubusercontent.com/u/5108906?v=4', 'undefined)';
+
+12:47:44 error: syntax error at or near ";"
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ('vitaly-t', 'Wicklow, Ireland', 'Vitaly Tomilov', 'Full-Stack Developer
+', 'https://avatars.githubusercontent.com/u/5108906?v=4', 'undefined)';RETURNING *
+
+12:48:25 error: syntax error at end of input
+         task(add-git-user): INSERT INTO gitusers(login, location, name, bio, avatar_url, company) VALUES ('vitaly-t', 'Wicklow, Ireland', 'Vitaly Tomilov', 'Full-Stack Developer
+', 'https://avatars.githubusercontent.com/u/5108906?v=4', 'undefined)'--;RETURNING *
+
+12:52:41 error: syntax error at or near ";"
+         task(add-git-user): INSERT INTO public.gitusers(login, location, name, bio, avatar_url, company) VALUES ('vitaly-t', 'Wicklow, Ireland', 'Vitaly Tomilov', 'Full-Stack Developer
+', 'https://avatars.githubusercontent.com/u/5108906?v=4', 'undefined)';
+
+12:54:46 error: syntax error at or near ";"
+         task(add-git-user): INSERT INTO public.gitusers(login, location, name, bio, avatar_url, company) VALUES ('vitaly-t', 'Wicklow, Ireland', 'Vitaly Tomilov', 'Full-Stack Developer
+', 'https://avatars.githubusercontent.com/u/5108906?v=4', 'undefined)';
+
+12:55:13 error: syntax error at or near ";"
+         task(add-git-user): INSERT INTO public.gitusers(login, location, name, bio, avatar_url, company) VALUES ('vitaly-t', 'Wicklow, Ireland', 'Vitaly Tomilov', 'Full-Stack Developer
+', 'https://avatars.githubusercontent.com/u/5108906?v=4', 'undefined)';

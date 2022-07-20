@@ -1,5 +1,6 @@
 # Git CLI
 
+This project allow get informations from git users and store in postgres database and search users by location and code languages that 
 Migrations
 
 Step

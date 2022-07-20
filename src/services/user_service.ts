@@ -1,10 +1,6 @@
 /**
  *        @file user_service.ts
- *  @repository 000-a-3100_api_boilerplate
- * @application 000-a-3100_api_boilerplate
- *     @summary UserService Class
- * @description Define Functions that perform CRUD operations on users
- *   @functions - createToken()
+ *              - FetchClienteAddToDatabase()
  *              - verifyToken()
  *              - decodeToken()
  *              - responseObject()
@@ -19,13 +15,41 @@
  *              - getDefaultUser()
  */
 
-import User from '../models/user';
-import Language from '../models/language';
+import UserObject from '../models/user';
+import UserFactory from '../factory/userfactory';
+import { db } from '../../db';
+import { GitUsers } from '../../db/models';
 
 export class UserService {
-  expReq?: any;
+  private _uf: UserFactory | undefined;
+  private _gitusers: UserObject = new UserObject();
 
-  expRes?: any;
+  /**
+   *
+   */
+
+  async FetchClienteAddToDatabase(userLogin: string): Promise<void> {
+    const _uf = new UserFactory(userLogin);
+
+    this._gitusers = await _uf.createUser();
+    console.log(
+      `\n _jsonUsuario ${_uf._jsonUsuario}===============FetchClienteAddToDatabase================================\n`,
+    );
+    console.log(
+      `\n _jsonUsuario\n\n conteudo:\n ${JSON.stringify(_uf._jsonUsuario)}\n`,
+    );
+
+    console.log(
+      `\n _gitusers ${this._gitusers}===============FetchClienteAddToDatabase============_gitusers====================\n`,
+    );
+    console.log(
+      `\n _gitusers\n\n conteudo:\n ${JSON.stringify(this._gitusers)}\n`,
+    );
+    await db.task('add-git-user', async (t) => {
+      const gituser = await t.gitusers.find(this._gitusers);
+      return gituser || (await t.gitusers.add(this._gitusers));
+    });
+  }
 
   // constructor(_user: any) {}
 
@@ -82,9 +106,9 @@ export class UserService {
   // get user from a location
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public async getFilteredUserInLocation(
-    users: User[],
+    users: UserObject[],
     userLocation: string,
-  ): Promise<User[]> {
+  ): Promise<UserObject[]> {
     return users.filter((user) => user.location === userLocation);
   }
 
