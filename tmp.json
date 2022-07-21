@@ -4,5 +4,7 @@
   "location": "Wicklow, Ireland",
   "bio": "Full-Stack Developer\r\n",
   "avatar_url": "https://avatars.githubusercontent.com/u/5108906?v=4",
-  "repos_url": "https://api.github.com/users/vitaly-t/repos"
+  "company": "Sibedge IT",
+  "repos_url": "https://api.github.com/users/vitaly-t/repos",
+  "repos": []
 }
