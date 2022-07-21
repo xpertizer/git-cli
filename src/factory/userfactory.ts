@@ -1,12 +1,8 @@
 import GitServices from '../services/gitServices';
 import Language from '../models/language';
-import User from '../models/user';
+import User from '../models/userobject';
 import Repo from '../models/repo';
-import { UserRepoResponse } from '../models/userreporesponse';
 import UserProfileResponse from '../models/userprofileresponse';
-import UserRepoLanguageResponse from '../models/userrepolanguageresponse';
-import { lchmod } from 'fs/promises';
-import e from 'express';
 
 export default class UserFactory {
   private _loginUser: string;
@@ -14,22 +10,18 @@ export default class UserFactory {
   private _gitUserRepos: Repo[] = [];
   private _repoCliLanguages: Language[] = [];
   private _gs = new GitServices();
-  public _jsonUsuario = new UserProfileResponse();
-  // private _jsonRepositorio: UserRepoResponse;
+  public _jsonUserProfileResponse = new UserProfileResponse();
 
-  /**
-   *
-   */
   constructor(gitUser: string) {
     this._loginUser = gitUser;
   }
   private async fetchUserData(): Promise<void> {
-    this._jsonUsuario = await this._gs.getProfile(this._loginUser);
+    this._jsonUserProfileResponse = await this._gs.getProfile(this._loginUser);
   }
   public async createUser(): Promise<User> {
     await this.fetchUserData();
     const jsonRepositorio: any = await this._gs.getRepo(
-      this._jsonUsuario.repos_url ?? '',
+      this._jsonUserProfileResponse.repos_url ?? '',
     );
 
     await jsonRepositorio.forEach(
@@ -52,13 +44,13 @@ export default class UserFactory {
       },
     );
     this._gitUser = new User(
-      this._jsonUsuario.login ?? '',
-      this._jsonUsuario.name ?? '',
-      this._jsonUsuario.location ?? '',
-      this._jsonUsuario.bio ?? '',
-      this._jsonUsuario.avatar_url ?? '',
-      this._jsonUsuario.repos_url ?? '',
-      this._jsonUsuario.company ?? '',
+      this._jsonUserProfileResponse.login ?? '',
+      this._jsonUserProfileResponse.name ?? '',
+      this._jsonUserProfileResponse.location ?? '',
+      this._jsonUserProfileResponse.bio ?? '',
+      this._jsonUserProfileResponse.avatar_url ?? '',
+      this._jsonUserProfileResponse.repos_url ?? '',
+      this._jsonUserProfileResponse.company ?? '',
       this._gitUserRepos,
     );
     return this._gitUser;

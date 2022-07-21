@@ -1,6 +1,6 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
-import UserObject from '../../src/models/user';
+import UserObject from '../../src/models/userobject';
 import UserProfileResponse from '../../src/models/userprofileresponse';
 import { GitUsers } from '../models';
 import { gitusers as sql } from '../sql';
@@ -59,7 +59,13 @@ export class GitUsersRepository {
 
     const values = JSON.parse(JSON.stringify(_gitProfile));
 
-    this.pgp.helpers.insert(values, cs);
+    const query = () => this.pgp.helpers.insert(values, cs);
+
+    await this.db.none(query);
+
+    console.log(
+      `Data from ${_user.name} wich have login ${_user.login} fetched and cached on database`,
+    );
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;

@@ -5,7 +5,7 @@
  */
 
 import { NullableString } from '../typings/types';
-import UserObject from './user';
+import UserObject from './userobject';
 
 /**
  * User class

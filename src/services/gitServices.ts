@@ -6,7 +6,7 @@ import UserRepoResponse from '../models/userreporesponse';
 
 export default class GitServices {
   private urlUsers = 'http://api.github.com/users/';
-  private token = process.env.GITTOKEN; // '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';
+  private token = process.env.GITTOKEN;
   private url = '';
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -14,7 +14,7 @@ export default class GitServices {
     try {
       if (!this.token) {
         console.log(
-          `\n token ${this.token}===============TOKEN INVALIDO=============================\n`,
+          `\n token ${this.token}===============Check .env file GITTOKEN value =============================\n`,
         );
         return;
       }
