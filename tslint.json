@@ -5,5 +5,8 @@
     ],
     "jsRules": {},
     "rules": {},
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    "compilerOptions": {
+        "typeRoots": ["./node_modules/@types", "./src/typings"]
+      }
 }

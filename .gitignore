@@ -4,3 +4,5 @@ package-lock.json
 lib
 .vscode/settings.json
 /src/**/*.js
+/tmp.json
+/bin

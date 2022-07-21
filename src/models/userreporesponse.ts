@@ -1,9 +1,7 @@
 /**
- *        @file user.ts
- *  @repository 000-a-3100_api_boilerplate
- * @application 000-a-3100_api_boilerplate
- *     @summary Repos Class
- * @description Defines the structure for user model
+ *        @file UserRepoResponse.ts
+ *     @summary UserRepoResponse Class
+ * @description Defines the structure for UserRepoResponse model
  */
 
 import { NullableString } from '../typings/types';

@@ -41,6 +41,7 @@ export class UserObject {
     bio?: string,
     avatar_url?: string,
     repos_url?: string,
+    company?: string,
     _repos?: Repo[],
   ) {
     this.login = login;
@@ -49,6 +50,7 @@ export class UserObject {
     this.bio = bio;
     this.avatar_url = avatar_url;
     this.repos_url = repos_url;
+    this.company = company;
     this.repos = _repos;
   }
 }
