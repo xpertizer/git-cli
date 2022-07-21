@@ -6,3 +6,4 @@ lib
 /src/**/*.js
 /tmp.json
 /bin
+/node_modules

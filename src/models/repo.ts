@@ -16,17 +16,15 @@ import Language from './language';
  */
 
 export class Repo {
-  public login: NullableString = undefined;
+  public login = '';
 
-  public name: NullableString = undefined;
+  public repositoryname = '';
 
   public languages: Language[] | undefined;
-  constructor(...args: any[]) {
-    if (args[0]) {
-      this.login = args[0];
-      this.name = args[1];
-      this.languages = args[2];
-    }
+  constructor(login: string, repositoryname: string, languages: Language[]) {
+    this.login = login;
+    this.repositoryname = repositoryname;
+    this.languages = languages;
   }
 }
 

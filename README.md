@@ -1,4 +1,10 @@
 # Git CLI
+## TO DO LIST
+
+1 - Save repositories and programming languages data into database
+2 - Code of list command line
+
+
 
 This project allow get informations from git users and store in postgres database and search users by location and code languages that 
 

@@ -1,5 +1,6 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
+import { Repo } from '../../src/models/repo';
 import { GitLanguages } from '../models';
 import { gitlanguages as sql } from '../sql';
 
@@ -48,8 +49,29 @@ export class GitLanguagesRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(name: string): Promise<GitLanguages> {
-    return this.db.one(sql.add, name);
+  async add(_languages: string): Promise<void> {
+    const cs = new this.pgp.helpers.ColumnSet(['login', 'repositoryname'], {
+      table: 'gitlanguages',
+    });
+
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`_languages=================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(` ${_languages} \n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+
+    const query = () => this.pgp.helpers.insert(JSON.parse(_languages), cs);
+
+    await this.db.none(query);
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;

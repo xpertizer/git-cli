@@ -1,5 +1,7 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
+import { db } from '..';
+import { Repo } from '../../src/models/repo';
 import UserObject from '../../src/models/userobject';
 import UserProfileResponse from '../../src/models/userprofileresponse';
 import { GitUsers } from '../models';
@@ -63,9 +65,30 @@ export class GitUsersRepository {
 
     await this.db.none(query);
 
+    if (_user.repos) {
+      await db.task('add-git-user-repos', async (t) => {
+        return await t.gitrepos.add(_user);
+      });
+    }
+
     console.log(
       `Data from ${_user.name} wich have login ${_user.login} fetched and cached on database`,
     );
+
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(`_user.repos=============================\n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(` ${JSON.stringify(_user.repos)} \n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
+    console.log(`========================================\n`);
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;

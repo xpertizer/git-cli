@@ -1,8 +1,8 @@
 /*
-    Adds a new Product for the specified User.
+    Adds a new gi trepos for the specified git repos.
 */
 INSERT INTO gitrepos(
-	login, name)
-	VALUES (${login}, ${name});
-VALUES(${userId}, ${productName})
+	login, repositoryname)
+	VALUES (${login}, ${repositoryname});
+VALUES(${login}, ${repositoryname})
 RETURNING *

@@ -7,7 +7,6 @@
 import UserObject from '../models/userobject';
 import UserFactory from '../factory/userfactory';
 import { db } from '../../db';
-import { Console } from 'console';
 
 export class UserService {
   private _gitusers: UserObject = new UserObject();

@@ -1,5 +1,10 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
+import { db } from '..';
+import language from '../../src/models/language';
+import { Repo } from '../../src/models/repo';
+import UserObject from '../../src/models/userobject';
+import UserRepoResponse from '../../src/models/userreporesponse';
 import { GitRepos } from '../models';
 import { gitrepos as sql } from '../sql';
 
@@ -19,6 +24,8 @@ export class GitReposRepository {
    * Library's root, if ever needed, like to access 'helpers'
    * or other namespaces available from the root.
    */
+  public userRepoResponses: UserRepoResponse[] = []; //| undefined;
+  public _languages: language[] = [];
   constructor(private db: IDatabase<unknown>, private pgp: IMain) {
     /*
           If your repository needs to use helpers like ColumnSet,
@@ -48,9 +55,69 @@ export class GitReposRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(name: string): Promise<GitRepos> {
-    return this.db.one(sql.add, name);
+  async add(_user: UserObject): Promise<void> {
+    const cs = new this.pgp.helpers.ColumnSet(['login', 'repositoryname'], {
+      table: 'gitrepos',
+    });
+    const _repos = _user.repos;
+    if (!_repos) return;
+    _repos.forEach((r: Repo) => {
+      const repoReponse = new UserRepoResponse(
+        _user.login ?? '',
+        r.repositoryname,
+        r.languages ?? [],
+      );
+
+      if (r.languages) {
+        r.languages.forEach((l) => {
+          this._languages.push(l);
+        });
+        this.userRepoResponses.push(repoReponse);
+      }
+    });
+
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`_user.repos=================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(` ${JSON.stringify(this.userRepoResponses)} \n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+    // console.log(`============================================\n`);
+
+    const values = JSON.parse(JSON.stringify(this.userRepoResponses));
+
+    const query = () => this.pgp.helpers.insert(values, cs);
+
+    await this.db.none(query);
+
+    if (this._languages) {
+      await db.task('add-git-user-languages', async (t) => {
+        return await t.gitlanguages.add(JSON.stringify(this._languages));
+      });
+    }
   }
+
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`_user.repos=============================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(` ${JSON.stringify(_user.repos)} \n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
+  // console.log(`========================================\n`);
 
   // Tries to delete a user by id, and returns the number of records deleted;
   async remove(id: number): Promise<number> {
@@ -61,14 +128,24 @@ export class GitReposRepository {
     );
   }
 
+  async find(login: string, repositoryname: string): Promise<GitRepos | null> {
+    return this.db.oneOrNone(
+      'SELECT * FROM gitrepos WHERE login = $1 and repositoryname = $2',
+      [login, repositoryname],
+    );
+  }
+
   // Tries to find a user from id;
   async findById(id: number): Promise<GitRepos | null> {
     return this.db.oneOrNone('SELECT * FROM gitrepos WHERE id = $1', +id);
   }
 
   // Tries to find a user from name;
-  async findByName(name: string): Promise<GitRepos | null> {
-    return this.db.oneOrNone('SELECT * FROM gitrepos WHERE name = $1', name);
+  async findByName(repositoryname: any): Promise<GitRepos | null> {
+    return this.db.oneOrNone(
+      'SELECT * FROM gitrepos WHERE name = $1',
+      repositoryname,
+    );
   }
 
   // Returns all user records;

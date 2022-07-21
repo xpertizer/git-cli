@@ -31,7 +31,7 @@ export class UserObject {
 
   public repos_url: NullableString = undefined;
 
-  public repos!: Repo[] | undefined;
+  public repos: Repo[] = [];
   constructor(
     login?: string,
     name?: string,
@@ -49,7 +49,7 @@ export class UserObject {
     this.avatar_url = avatar_url;
     this.repos_url = repos_url;
     this.company = company;
-    this.repos = _repos;
+    this.repos = _repos ?? [];
   }
 }
 

@@ -16,12 +16,12 @@ import { NullableString } from '../typings/types';
 
 export class Language {
   public login: NullableString = undefined;
-  public repoName: NullableString = undefined;
+  public repositoryname: NullableString = undefined;
   public knownLanguage: string | undefined;
 
   constructor(_login: string, _repoName: string, _knownLanguage: string) {
     this.login = _login;
-    this.repoName = _repoName;
+    this.repositoryname = _repoName;
     this.knownLanguage = _knownLanguage;
   }
 }

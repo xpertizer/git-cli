@@ -29,20 +29,42 @@ export default class UserFactory {
         const jsonLanguages: any = await this._gs.getLanguages(
           repoJson.languages_url,
         );
+
         JSON.stringify(jsonLanguages)
           .split(',')
           .forEach((e: string) => {
-            const _lang: string = e.split(':')[0].replaceAll('"', '');
+            const _lang: string = e
+              .split(':')[0]
+              .replaceAll('"', '')
+              .replaceAll('{', '')
+              .replaceAll('}', '');
             this._repoCliLanguages.push(
               new Language(this._loginUser, repoJson.name, _lang),
             );
           });
-
-        this._gitUserRepos.push(
-          new Repo(repoJson.name, repoJson.login, this._repoCliLanguages),
+        const _itemRepo = new Repo(
+          repoJson.login,
+          repoJson.name,
+          this._repoCliLanguages,
         );
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`_itemRepo ===============================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(` ${JSON.stringify(_itemRepo)} \n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        // console.log(`========================================\n`);
+        this._gitUserRepos.push(_itemRepo);
       },
     );
+
     this._gitUser = new User(
       this._jsonUserProfileResponse.login ?? '',
       this._jsonUserProfileResponse.name ?? '',

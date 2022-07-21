@@ -10,11 +10,11 @@ export interface GitUsers {
 
 export interface GitRepos {
   login: string;
-  name: string;
+  repositoryname: string;
 }
 
 export interface GitLanguages {
   login: string;
-  name: string;
+  repositoryname: string;
   language: string;
 }
