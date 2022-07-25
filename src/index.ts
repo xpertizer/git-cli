@@ -13,7 +13,7 @@ console.log(
 );
 
 program
-  .version('0.0.1')
+  .version('0.0.2')
   .description('Cli app to fetch e query programming languages and locations')
   .parse(process.argv);
 

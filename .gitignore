@@ -1,3 +1,15 @@
 .idea/
 node_modules
 package-lock.json
+lib
+.vscode/settings.json
+/src/**/*.js
+/tmp.json
+/bin
+/node_modules
+/git-cli-app.tar.gz
+/db/errors.log
+/.swp
+/.swo
+/tsconfig.jsonbkp
+/package-lock.json

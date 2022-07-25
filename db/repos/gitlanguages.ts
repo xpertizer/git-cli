@@ -48,8 +48,17 @@ export class GitLanguagesRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(name: string): Promise<GitLanguages> {
-    return this.db.one(sql.add, name);
+  async add(_languages: any): Promise<void> {
+    const cs = new this.pgp.helpers.ColumnSet(
+      ['login', 'language', 'repositoryname'],
+      {
+        table: 'gitlanguages',
+      },
+    );
+
+    const query = () => this.pgp.helpers.insert(_languages, cs);
+
+    await this.db.none(query);
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;
@@ -71,6 +80,12 @@ export class GitLanguagesRepository {
     return this.db.oneOrNone(
       'SELECT * FROM gitlanguages WHERE name = $1',
       name,
+    );
+  }
+
+  async find(language: any): Promise<GitLanguages | null> {
+    return this.db.oneOrNone(
+      `SELECT * FROM gitlanguages WHERE login = '${language.login}' and language='${language.language}' and repositoryname = '${language.repositoryname}'`,
     );
   }
 

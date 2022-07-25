@@ -5,15 +5,16 @@ export interface GitUsers {
   bio: string;
   avatar_url: string;
   company: string;
+  repos_url: string;
 }
 
 export interface GitRepos {
   login: string;
-  name: string;
+  repositoryname: string;
 }
 
 export interface GitLanguages {
   login: string;
-  name: string;
+  repositoryname: string;
   language: string;
 }

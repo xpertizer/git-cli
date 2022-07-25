@@ -1,1 +1,0 @@
-{"version":3,"file":"fetchuser.js","sourceRoot":"","sources":["../../src/commands/fetchuser.ts"],"names":[],"mappings":";;;;;AAAA,yEAAiD;AAClC,KAAK,UAAU,SAAS,CAAC,OAAe;IAKrD,MAAM,GAAG,GAAG,IAAI,qBAAW,CAAC,OAAO,CAAC,CAAC;IAGrC,MAAM,GAAG,CAAC,UAAU,EAAE,CAAC;IACvB,OAAO,CAAC,GAAG,CAAC,MAAM,GAAG,CAAC,UAAU,EAAE,CAAC,CAAC;AAKtC,CAAC;AAdD,4BAcC;AACD,MAAM,CAAC,OAAO,GAAG,SAAS,CAAC"}

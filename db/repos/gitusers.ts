@@ -48,8 +48,19 @@ export class GitUsersRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(name: string): Promise<GitUsers> {
-    return this.db.one(sql.add, name);
+  async add(_user: any): Promise<void> {
+    const cs = new this.pgp.helpers.ColumnSet(
+      ['login', 'location', 'name', 'bio', 'avatar_url', 'company'],
+      { table: 'gitusers' },
+    );
+
+    const query = () => this.pgp.helpers.insert(_user, cs);
+
+    await this.db.none(query);
+
+    console.log(
+      `Data from ${_user.name} wich have login ${_user.login} fetched and cached on database`,
+    );
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;
@@ -62,14 +73,18 @@ export class GitUsersRepository {
   }
 
   // Tries to find a user from id;
-  async findByLogin(login: number): Promise<GitUsers | null> {
-    return this.db.oneOrNone('SELECT * FROM gitusers WHERE login = $1', +login);
+  async find(_login: string): Promise<GitUsers | null> {
+    return this.findByLogin(_login);
+  }
+  // Tries to find a user from id;
+  async findByLogin(_login: string): Promise<GitUsers | null> {
+    return this.db.oneOrNone('SELECT * FROM gitusers WHERE login = $1', _login);
   }
 
   // Tries to find a user from name;
-  async findByLocation(location: string): Promise<GitUsers | null> {
-    return this.db.oneOrNone(
-      'SELECT * FROM gitusers WHERE location = $1',
+  async findByLocation(location: string): Promise<any | null> {
+    return this.db.any(
+      `SELECT * FROM gitusers WHERE location like $1`,
       location,
     );
   }

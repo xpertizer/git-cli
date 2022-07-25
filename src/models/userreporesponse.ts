@@ -1,13 +1,10 @@
 /**
- *        @file user.ts
- *  @repository 000-a-3100_api_boilerplate
- * @application 000-a-3100_api_boilerplate
- *     @summary Repos Class
- * @description Defines the structure for user model
+ *        @file UserRepoResponse.ts
+ *     @summary UserRepoResponse Class
+ * @description Defines the structure for UserRepoResponse model
  */
 
 import { NullableString } from '../typings/types';
-import Language from './language';
 
 /**
  * Repos class
@@ -17,12 +14,19 @@ import Language from './language';
  * @class Repos
  */
 
-export class UserRepoResponse {
+export default class UserRepoResponse extends Object {
   public login: NullableString = undefined;
 
-  public name: NullableString = undefined;
+  public repositoryname: NullableString = undefined;
 
-  public languages: Language[] | undefined;
+  public languages_url: NullableString = undefined;
+
+  constructor(login?: string, repositoryname?: string, lang_url?: string) {
+    super();
+    this.login = login;
+
+    this.repositoryname = repositoryname;
+
+    this.languages_url = lang_url;
+  }
 }
-
-export default UserRepoResponse;

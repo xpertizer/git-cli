@@ -1,5 +1,7 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
+import language from '../../src/models/language';
+import UserRepoResponse from '../../src/models/userreporesponse';
 import { GitRepos } from '../models';
 import { gitrepos as sql } from '../sql';
 
@@ -19,6 +21,8 @@ export class GitReposRepository {
    * Library's root, if ever needed, like to access 'helpers'
    * or other namespaces available from the root.
    */
+  public userRepoResponses: UserRepoResponse[] = []; //| undefined;
+  public _languages: language[] = [];
   constructor(private db: IDatabase<unknown>, private pgp: IMain) {
     /*
           If your repository needs to use helpers like ColumnSet,
@@ -48,8 +52,14 @@ export class GitReposRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(name: string): Promise<GitRepos> {
-    return this.db.one(sql.add, name);
+  async add(_repos: any): Promise<void> {
+    const cs = new this.pgp.helpers.ColumnSet(['login', 'repositoryname'], {
+      table: 'gitrepos',
+    });
+
+    const query = () => this.pgp.helpers.insert(_repos, cs);
+
+    await this.db.none(query);
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;
@@ -61,14 +71,24 @@ export class GitReposRepository {
     );
   }
 
+  async find(login: string, repositoryname: string): Promise<GitRepos | null> {
+    return this.db.oneOrNone(
+      'SELECT * FROM gitrepos WHERE login = $1 and repositoryname = $2',
+      [login, repositoryname],
+    );
+  }
+
   // Tries to find a user from id;
   async findById(id: number): Promise<GitRepos | null> {
     return this.db.oneOrNone('SELECT * FROM gitrepos WHERE id = $1', +id);
   }
 
   // Tries to find a user from name;
-  async findByName(name: string): Promise<GitRepos | null> {
-    return this.db.oneOrNone('SELECT * FROM gitrepos WHERE name = $1', name);
+  async findByName(repositoryname: any): Promise<GitRepos | null> {
+    return this.db.oneOrNone(
+      'SELECT * FROM gitrepos WHERE name = $1',
+      repositoryname,
+    );
   }
 
   // Returns all user records;

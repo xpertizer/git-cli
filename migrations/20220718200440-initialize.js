@@ -3,51 +3,49 @@
 var dbm;
 var type;
 var seed;
-var fs = require('fs');
-var path = require('path');
+import { readFile } from 'fs';
+import { join } from 'path';
 var Promise;
 
 /**
-  * We receive the dbmigrate dependency from dbmigrate initially.
-  * This enables us to not have to rely on NODE_PATH.
-  */
-exports.setup = function(options, seedLink) {
+ * We receive the dbmigrate dependency from dbmigrate initially.
+ * This enables us to not have to rely on NODE_PATH.
+ */
+export function setup(options, seedLink) {
   dbm = options.dbmigrate;
   type = dbm.dataType;
   seed = seedLink;
   Promise = options.Promise;
-};
+}
 
-exports.up = function(db) {
-  var filePath = path.join(__dirname, 'sqls', '20220718200440-initialize-up.sql');
-  return new Promise( function( resolve, reject ) {
-    fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
+export function up(db) {
+  var filePath = join(__dirname, 'sqls', '20220718200440-initialize-up.sql');
+  return new Promise(function (resolve, reject) {
+    readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
       if (err) return reject(err);
       console.log('received data: ' + data);
 
       resolve(data);
     });
-  })
-  .then(function(data) {
+  }).then(function (data) {
     return db.runSql(data);
   });
-};
+}
 
-exports.down = function(db) {
-  var filePath = path.join(__dirname, 'sqls', '20220718200440-initialize-down.sql');
-  return new Promise( function( resolve, reject ) {
-    fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
+export function down(db) {
+  var filePath = join(__dirname, 'sqls', '20220718200440-initialize-down.sql');
+  return new Promise(function (resolve, reject) {
+    readFile(filePath, { encoding: 'utf-8' }, function (err, data) {
       if (err) return reject(err);
       console.log('received data: ' + data);
 
       resolve(data);
     });
-  })
-  .then(function(data) {
+  }).then(function (data) {
     return db.runSql(data);
   });
-};
+}
 
-exports._meta = {
-  "version": 1
+export const _meta = {
+  version: 1,
 };

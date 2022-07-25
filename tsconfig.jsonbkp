@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowJs": true,                       /* Allow javascript files to be compiled. */
+    "removeComments": true,                   /* Do not emit comments to output. */
+    "outDir": "bin",
+    
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "bin"
+  ]
+}

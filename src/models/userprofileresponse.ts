@@ -1,35 +1,54 @@
 /**
- *        @file user.ts
- *  @repository 000-a-3100_api_boilerplate
- * @application 000-a-3100_api_boilerplate
- *     @summary User Class
- * @description Defines the structure for user model
+ *        @file UserProfileResponse.ts
+ *     @summary UserProfileResponse Class
+ * @description Defines the structure for UserProfileResponse model
  */
 
 import { NullableString } from '../typings/types';
-import { Repo } from './repo';
+import UserObject from './userobject';
 
 /**
  * User class
  *
- * This class contains information about the git user and
+ * This class contains information about the git user profile
  *
  * @class User
  */
 
-export default class UserProfileResponse {
-  public login!: string;
+export default class UserProfileResponse extends UserObject {
+  public login: NullableString = undefined;
 
-  public name!: string;
+  public name: NullableString = undefined;
 
-  public location!: string;
+  public location: NullableString = undefined;
 
-  public bio!: string;
+  public bio: NullableString = undefined;
 
-  public avatar_url!: string;
+  public avatar_url: NullableString = undefined;
 
-  public company!: string;
+  public company: NullableString = undefined;
 
-  public repos_url!: string;
+  public repos_url: NullableString = undefined;
   keys: any;
+  /**
+   *
+   */
+  constructor(_gitUser?: UserObject | null | undefined) {
+    super();
+    if (_gitUser) {
+      this.login = _gitUser.login;
+
+      this.name = _gitUser.name;
+
+      this.location = _gitUser.location;
+
+      this.bio = _gitUser.bio;
+
+      this.avatar_url = _gitUser.avatar_url;
+
+      this.company = _gitUser.company;
+
+      this.repos_url = _gitUser.repos_url;
+    }
+  }
 }

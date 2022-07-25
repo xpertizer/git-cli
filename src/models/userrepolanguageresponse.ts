@@ -18,6 +18,7 @@ export class UserRepoLanguageResponse {
   public login: NullableString = undefined;
   public repoName: NullableString = undefined;
   public knownLanguage: string | undefined;
+  data: any;
 }
 /**
  *
