@@ -28,7 +28,7 @@ export default class UserProfileResponse extends UserObject {
 
   public company: NullableString = undefined;
 
-  public repos_url: NullableString = '';
+  public repos_url: NullableString = undefined;
   keys: any;
   /**
    *

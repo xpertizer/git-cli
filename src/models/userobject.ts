@@ -6,7 +6,7 @@
  */
 
 import { NullableString } from '../typings/types';
-import { Repo } from './repo';
+import Repo from './repo';
 
 /**
  * User class

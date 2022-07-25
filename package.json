@@ -39,6 +39,7 @@
     "pg-promise": "^10.11.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/clear": "^0.1.2",
     "@types/figlet": "^1.5.4",
     "@types/lodash": "^4.14.157",

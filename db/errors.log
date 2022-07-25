@@ -99,3 +99,171 @@
 
 17:50:28 error: Cannot generate an INSERT from an empty array.
          task(add-git-user-repos): [Function: query]
+
+19:00:28 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:05:03 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:08:04 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:17:23 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:20:09 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:21:40 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:25:31 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:27:02 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:51:04 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:53:38 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+19:56:27 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:00:19 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:04:12 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:08:49 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:14:51 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:22:57 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:25:12 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:29:37 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:33:35 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:42:00 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+21:50:03 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+22:14:09 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+22:20:41 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+22:30:20 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+22:42:57 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:09:43 error: there is no parameter $1
+         task(add-git-user): SELECT * FROM gitusers WHERE login = $1
+
+23:12:18 error: there is no parameter $1
+         task(add-git-user): SELECT * FROM gitusers WHERE login = $1
+
+23:13:18 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:18:36 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:20:18 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:22:38 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:23:30 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:25:26 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:26:37 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:30:38 error: there is no parameter $1
+         task(add-git-user): SELECT * FROM gitusers WHERE login = $1
+
+23:32:48 error: there is no parameter $1
+         task(add-git-user): SELECT * FROM gitusers WHERE login = $1
+
+23:55:04 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:57:33 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+23:59:07 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+00:15:42 error: Cannot generate an INSERT from an empty array.
+         task(add-git-user-repos): [Function: query]
+
+20:22:13 error: there is no parameter $1
+         task(add-git-user): SELECT * FROM gitusers WHERE login = $1
+
+10:52:30 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+10:58:12 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:10:09 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:18:58 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:22:44 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:29:10 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:31:01 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:34:22 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:35:07 error: Invalid parameter 'data' specified.
+         task(add-git-user): [Function: query]
+
+11:40:30 error: Property 'location' doesn't exist.
+         task(add-git-user): [Function: query]
+
+11:58:14 error: there is no parameter $1
+         task(add-git-user-repo-lang): SELECT * FROM gitlanguages WHERE login = $1 and language=$2 and respositoryname = $3
+
+12:00:16 error: syntax error at or near "for"
+         task(add-git-user-repo-lang): SELECT * FROM gitlanguages WHERE login = torvalds and language=C and respositoryname = libdc-for-dirk
+
+12:01:57 error: column "respositoryname" does not exist
+         task(add-git-user-repo-lang): SELECT * FROM gitlanguages WHERE login = 'torvalds' and language='C' and respositoryname = 'libdc-for-dirk'
+
+12:04:58 error: column gitlanguages.respositoryname does not exist
+         task(add-git-user-repo-lang): SELECT * FROM gitlanguages WHERE login = 'torvalds' and language='C' and gitlanguages.respositoryname = 'libdc-for-dirk'
+
+12:30:49 error: Multiple rows were not expected.
+         task(add-git-user): SELECT * FROM gitusers WHERE location like '%%'

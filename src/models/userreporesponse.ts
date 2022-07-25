@@ -5,8 +5,6 @@
  */
 
 import { NullableString } from '../typings/types';
-import Language from './language';
-import Repo from './repo';
 
 /**
  * Repos class
@@ -21,14 +19,14 @@ export default class UserRepoResponse extends Object {
 
   public repositoryname: NullableString = undefined;
 
-  public languages: Language[] | undefined;
+  public languages_url: NullableString = undefined;
 
-  constructor(login: string, repositoryname: string, languages: Language[]) {
+  constructor(login?: string, repositoryname?: string, lang_url?: string) {
     super();
     this.login = login;
 
     this.repositoryname = repositoryname;
 
-    this.languages = languages;
+    this.languages_url = lang_url;
   }
 }

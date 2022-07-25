@@ -1,9 +1,5 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
-import { db } from '..';
-import { Repo } from '../../src/models/repo';
-import UserObject from '../../src/models/userobject';
-import UserProfileResponse from '../../src/models/userprofileresponse';
 import { GitUsers } from '../models';
 import { gitusers as sql } from '../sql';
 
@@ -52,43 +48,19 @@ export class GitUsersRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(_user: UserObject): Promise<void> {
+  async add(_user: any): Promise<void> {
     const cs = new this.pgp.helpers.ColumnSet(
       ['login', 'location', 'name', 'bio', 'avatar_url', 'company'],
       { table: 'gitusers' },
     );
-    const _gitProfile = new UserProfileResponse(_user);
 
-    const values = JSON.parse(JSON.stringify(_gitProfile));
-
-    const query = () => this.pgp.helpers.insert(values, cs);
+    const query = () => this.pgp.helpers.insert(_user, cs);
 
     await this.db.none(query);
-
-    if (_user.repos) {
-      await db.task('add-git-user-repos', async (t) => {
-        return await t.gitrepos.add(_user);
-      });
-    }
 
     console.log(
       `Data from ${_user.name} wich have login ${_user.login} fetched and cached on database`,
     );
-
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(`_user.repos=============================\n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(` ${JSON.stringify(_user.repos)} \n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
-    console.log(`========================================\n`);
   }
 
   // Tries to delete a user by id, and returns the number of records deleted;
@@ -101,21 +73,18 @@ export class GitUsersRepository {
   }
 
   // Tries to find a user from id;
-  async find(_user: UserObject): Promise<GitUsers | null> {
-    return this.findByLogin(_user);
+  async find(_login: string): Promise<GitUsers | null> {
+    return this.findByLogin(_login);
   }
   // Tries to find a user from id;
-  async findByLogin(_user: UserObject): Promise<GitUsers | null> {
-    return this.db.oneOrNone(
-      'SELECT * FROM gitusers WHERE login = $1',
-      _user.login,
-    );
+  async findByLogin(_login: string): Promise<GitUsers | null> {
+    return this.db.oneOrNone('SELECT * FROM gitusers WHERE login = $1', _login);
   }
 
   // Tries to find a user from name;
-  async findByLocation(location: string): Promise<GitUsers | null> {
-    return this.db.oneOrNone(
-      'SELECT * FROM gitusers WHERE location = $1',
+  async findByLocation(location: string): Promise<any | null> {
+    return this.db.any(
+      `SELECT * FROM gitusers WHERE location like $1`,
       location,
     );
   }

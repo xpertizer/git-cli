@@ -14,7 +14,7 @@ import { NullableString } from '../typings/types';
  * @class Language
  */
 
-export class Language {
+export default class Language {
   public login: NullableString = undefined;
   public repositoryname: NullableString = undefined;
   public knownLanguage: string | undefined;
@@ -25,7 +25,3 @@ export class Language {
     this.knownLanguage = _knownLanguage;
   }
 }
-/**
- *
- */
-export default Language;

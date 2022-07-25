@@ -1,6 +1,5 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
-import { Repo } from '../../src/models/repo';
 import { GitLanguages } from '../models';
 import { gitlanguages as sql } from '../sql';
 
@@ -49,27 +48,15 @@ export class GitLanguagesRepository {
   }
 
   // Adds a new user, and returns the new object;
-  async add(_languages: string): Promise<void> {
-    const cs = new this.pgp.helpers.ColumnSet(['login', 'repositoryname'], {
-      table: 'gitlanguages',
-    });
+  async add(_languages: any): Promise<void> {
+    const cs = new this.pgp.helpers.ColumnSet(
+      ['login', 'language', 'repositoryname'],
+      {
+        table: 'gitlanguages',
+      },
+    );
 
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`_languages=================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(` ${_languages} \n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-    // console.log(`============================================\n`);
-
-    const query = () => this.pgp.helpers.insert(JSON.parse(_languages), cs);
+    const query = () => this.pgp.helpers.insert(_languages, cs);
 
     await this.db.none(query);
   }
@@ -93,6 +80,12 @@ export class GitLanguagesRepository {
     return this.db.oneOrNone(
       'SELECT * FROM gitlanguages WHERE name = $1',
       name,
+    );
+  }
+
+  async find(language: any): Promise<GitLanguages | null> {
+    return this.db.oneOrNone(
+      `SELECT * FROM gitlanguages WHERE login = '${language.login}' and language='${language.language}' and repositoryname = '${language.repositoryname}'`,
     );
   }
 

@@ -15,17 +15,22 @@ import Language from './language';
  * @class Repos
  */
 
-export class Repo {
-  public login = '';
+export default class Repo extends Object {
+  public login: NullableString = undefined;
 
-  public repositoryname = '';
+  public repositoryname: NullableString = undefined;
 
   public languages: Language[] | undefined;
-  constructor(login: string, repositoryname: string, languages: Language[]) {
-    this.login = login;
-    this.repositoryname = repositoryname;
-    this.languages = languages;
+  constructor(
+    login?: string | null | undefined,
+    repositoryname?: string | null | undefined,
+    languages?: Language[] | undefined,
+  ) {
+    super();
+    if (login || repositoryname || languages) {
+      this.login = login;
+      this.repositoryname = repositoryname;
+      this.languages = languages;
+    }
   }
 }
-
-export default Repo;
