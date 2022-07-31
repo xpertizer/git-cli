@@ -1,5 +1,6 @@
 import { IDatabase, IMain } from 'pg-promise';
 import { IResult } from 'pg-promise/typescript/pg-subset';
+import Language from '../../src/models/language';
 import { GitUsers } from '../models';
 import { gitusers as sql } from '../sql';
 
@@ -82,11 +83,45 @@ export class GitUsersRepository {
   }
 
   // Tries to find a user from name;
-  async findByLocation(location: string): Promise<any | null> {
-    return this.db.any(
-      `SELECT * FROM gitusers WHERE UPPER(location) like $1`,
-      location.toUpperCase(),
-    );
+  async findByLocation(
+    location: string,
+    language: string,
+  ): Promise<any | null> {
+    let _return;
+    if (!language) {
+      _return = this.db.any(
+        `SELECT * FROM gitusers WHERE UPPER(location) like $1`,
+        location.toUpperCase(),
+      );
+    } else {
+      const words = language.split(',');
+      console.log(`words`);
+      console.log(words);
+      const array2 = [];
+      for (const word in words) {
+        array2.push(`'` + words[word].trim().toUpperCase() + `'`);
+      }
+      console.log(`array2`);
+      console.log(array2.join(`,`));
+      const query = `SELECT DISTINCT U.LOGIN,
+                      U.LOCATION,
+                      U.NAME,
+                      STRING_AGG(L.LANGUAGE,', ') LANGUAGES
+                    FROM GITUSERS U
+                    JOIN (
+                      SELECT distinct L2.login, L2.language 
+                      FROM public.gitlanguages L2 ) L ON U.LOGIN = L.LOGIN
+                    WHERE UPPER(LOCATION) like $1
+                      AND U.LOGIN in (
+                      SELECT distinct gl.LOGIN FROM gitlanguages gl WHERE UPPER(LANGUAGE) IN ($2) )
+                      AND L.language<>''
+                      GROUP BY
+                        U.LOGIN,
+                      U.LOCATION,
+                      U.NAME`;
+      _return = this.db.any(query, [location.toUpperCase(), array2.join(`,`)]);
+    }
+    return _return;
   }
 
   // Tries to find a user from name;

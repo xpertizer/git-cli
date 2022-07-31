@@ -13,3 +13,4 @@ lib
 /.swo
 /tsconfig.jsonbkp
 /package-lock.json
+/.env

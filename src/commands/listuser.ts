@@ -5,7 +5,7 @@ export default async function listUser(location: any, languages: any) {
   console.log(`\n Result for languages ${languages}`);
   const lineWidth = 83;
   await db.task('find-git-user', async (t) => {
-    const gitusers = await t.gitusers.findByLocation(location);
+    const gitusers = await t.gitusers.findByLocation(location, languages);
     console.log('+', '='.repeat(lineWidth), '+');
     console.log(
       '|',
@@ -13,6 +13,7 @@ export default async function listUser(location: any, languages: any) {
       '|',
       'Location'.padEnd(30, ' '),
       '|',
+      'Languages',
     ); //, 'location');
     console.log('+', '='.repeat(lineWidth), '+');
     for (const key in gitusers) {
@@ -24,6 +25,7 @@ export default async function listUser(location: any, languages: any) {
         '|',
         gitUser.location.padEnd(30, ' '),
         '|',
+        gitUser.languages,
       );
     }
     console.log('+', '='.repeat(lineWidth), '+');

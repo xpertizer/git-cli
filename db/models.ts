@@ -6,6 +6,7 @@ export interface GitUsers {
   avatar_url: string;
   company: string;
   repos_url: string;
+  languages: string;
 }
 
 export interface GitRepos {
