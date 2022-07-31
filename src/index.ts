@@ -23,7 +23,7 @@ program
   .action(fetchUser);
 
 program
-  .command('listUser <location>')
+  .command('listUser <location> <languages>')
   .description('List all users in a specifica location')
   .action(listUser);
 

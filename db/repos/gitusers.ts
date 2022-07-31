@@ -84,8 +84,8 @@ export class GitUsersRepository {
   // Tries to find a user from name;
   async findByLocation(location: string): Promise<any | null> {
     return this.db.any(
-      `SELECT * FROM gitusers WHERE location like $1`,
-      location,
+      `SELECT * FROM gitusers WHERE UPPER(location) like $1`,
+      location.toUpperCase(),
     );
   }
 

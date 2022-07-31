@@ -267,3 +267,6 @@
 
 12:30:49 error: Multiple rows were not expected.
          task(add-git-user): SELECT * FROM gitusers WHERE location like '%%'
+
+20:58:55 error: String.prototype.toUpperCase called on null or undefined
+         task(find-git-user): SELECT * FROM gitusers WHERE UPPER(location) like $1
